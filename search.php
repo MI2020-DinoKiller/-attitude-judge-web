@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER["DOCUMENT_ROOT"] . "/header.php");
+include_once("header.php");
 if (!isset($_GET["q"])) {
     header("Location: /");
 }
@@ -23,5 +23,5 @@ echo $output;
 ?>
 
 <?php
-include_once($_SERVER["DOCUMENT_ROOT"] . "/footer.php");
+include_once("footer.php");
 ?>

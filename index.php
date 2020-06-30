@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER["DOCUMENT_ROOT"] . "/header.php");
+include_once("header.php");
 ?>
 
 <form class="ui form" action="search.php" method="GET">
@@ -13,5 +13,5 @@ include_once($_SERVER["DOCUMENT_ROOT"] . "/header.php");
 </form>
 
 <?php
-include_once($_SERVER["DOCUMENT_ROOT"] . "/footer.php");
+include_once("footer.php");
 ?>
