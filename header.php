@@ -1,5 +1,7 @@
 <?php
 session_start();
+$filename = pathinfo($_SERVER['PHP_SELF']);
+$filename = $filename['filename'];
 ?>
 <!DOCTYPE html>
 <html lang="zh-TW" style="position: fixed; width: 100%; overflow: hidden; ">
@@ -14,6 +16,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
 
 </head>
 

@@ -12,7 +12,6 @@ var app = new Vue({
         checkForm: function (e) {
             if (this.q) {
                 this.isActive = !this.isActive;
-                this.q = this.q.trim();
                 return true;
             }
 
