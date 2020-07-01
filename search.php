@@ -5,6 +5,17 @@ if (!isset($_GET["q"])) {
 }
 ?>
 
+<script>
+    function decodeEntities(encodedString) {
+        var textArea = document.createElement('textarea');
+        textArea.innerHTML = encodedString;
+        return textArea.value;
+    }
+    var myDataFromPhp = {
+        'q': decodeEntities("<?php echo htmlspecialchars($_GET["q"]); ?>")
+    };
+</script>
+
 <form id="SearchForm" @submit="checkForm" class="ui form" action="search.php" method="GET">
     <div class="field">
         <div class="ui fluid icon input">
@@ -19,9 +30,8 @@ if (!isset($_GET["q"])) {
 
 <?php
 
-// $output = shell_exec("/usr/local/bin/python3 google-search-crawler/app.py '" . $_GET["q"] . "' 1");
-// echo $output;
-echo $_GET["q"];
+$output = shell_exec("/usr/local/bin/python3 google-search-crawler/app.py '" . $_GET["q"] . "' 1");
+echo $output;
 
 ?>
 

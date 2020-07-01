@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
         errors: [],
-        q: null,
+        q: window.myDataFromPhp['q'],
         isActive: false
     },
     methods: {
