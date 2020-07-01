@@ -15,6 +15,8 @@ if (!isset($_GET["q"])) {
     <button class="massive ui primary button" type="submit">搜尋</button>
 </form>
 
+<script src="/js/index.js"></script>
+
 <?php
 
 $output = shell_exec("/usr/local/bin/python3 google-search-crawler/app.py '" . $_GET["q"] . "' 1");
