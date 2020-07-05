@@ -5,7 +5,7 @@ if (!isset($_GET["q"])) {
 }
 ?>
 
-<script>
+<script type="application/javascript">
     function decodeEntities(encodedString) {
         var textArea = document.createElement('textarea');
         textArea.innerHTML = encodedString;
@@ -16,10 +16,11 @@ if (!isset($_GET["q"])) {
     };
 </script>
 
+
 <form id="SearchForm" @submit="checkForm" class="ui form" action="search.php" method="GET">
     <div class="field">
         <div class="ui fluid icon input">
-            <input name="q" v-model="q" v-on:input="trimremove" type="text" placeholder="開始搜尋......" required>
+            <input name="q" v-model="q" type="text" placeholder="開始搜尋......" required>
             <i class="search icon"></i>
         </div>
     </div>

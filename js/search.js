@@ -6,10 +6,8 @@ var app = new Vue({
         isActive: false
     },
     methods: {
-        trimremove: function () {
-            this.q = this.q.trim();
-        },
         checkForm: function (e) {
+            this.q = this.q.trim();
             if (this.q) {
                 this.isActive = !this.isActive;
                 return true;
