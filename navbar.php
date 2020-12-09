@@ -2,7 +2,7 @@
     <div class="ui container">
         <a class="header item" href="/">
             <span style="font-size: 1.5em; font-weight: 600; ">
-                健康保健資訊正反向判斷
+                網路上正反意向健康保健資訊之推薦
             </span>
         </a>
         <a class="item" href="/whitelist.php"><i class="list icon"></i> 白名單</a>
