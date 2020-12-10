@@ -31,6 +31,16 @@ $SQL = "DROP TABLE IF EXISTS `idf`;
     ALTER TABLE `searchresult` ADD PRIMARY KEY (`SearchResultId`);
     ALTER TABLE `searchresult` MODIFY `SearchResultId` int(11) NOT NULL AUTO_INCREMENT;
 
+    DROP TABLE IF EXISTS `sentence`;
+    CREATE TABLE IF NOT EXISTS `sentence` (
+    `id` int(11) NOT NULL,
+    `search_result_id` int(11) NOT NULL,
+    `sentences` varchar(500) NOT NULL,
+    `sentence_grade` int(11) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ALTER TABLE `sentence` ADD PRIMARY KEY (`id`), ADD KEY `search_result_id` (`search_result_id`);
+    ALTER TABLE `sentence` ADD CONSTRAINT `search_result_id` FOREIGN KEY (`search_result_id`) REFERENCES `searchresult` (`SearchResultId`);
+
     DROP TABLE IF EXISTS `WhiteList`;
     CREATE TABLE IF NOT EXISTS `WhiteList` (
     `WhiteListId` int(10) UNSIGNED NOT NULL,
@@ -38,6 +48,7 @@ $SQL = "DROP TABLE IF EXISTS `idf`;
     `WhiteListClass` int(11) NOT NULL,
     `WhiteListLink` varchar(1000) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    
     INSERT INTO `WhiteList` (`WhiteListId`, `WhiteListName`, `WhiteListClass`, `WhiteListLink`) VALUES
     (1, '衛生福利部', 1, 'https://www.mohw.gov.tw/'),
     (2, '衛生福利部中央健康保險署', 1, 'https://www.nhi.gov.tw/'),
