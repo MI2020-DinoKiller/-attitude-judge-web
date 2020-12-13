@@ -1,0 +1,12 @@
+{
+    "name": "jerry/attitude-judge-web",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.12"
+    },
+    "authors": [
+        {
+            "name": "tico88612",
+            "email": "tico88612@yahoo.com.tw"
+        }
+    ]
+}

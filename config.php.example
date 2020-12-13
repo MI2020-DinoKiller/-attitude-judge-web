@@ -1,10 +1,16 @@
 <?php
-$servername = "localhost";
+$servername = "host";
 $username = "username";
 $password = "password";
+$database = "mitopic";
+
+$MQServer = "host";
+$MQPort = 5672;
+$MQUsername = "username";
+$MQPassword = "password";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Connected successfully";

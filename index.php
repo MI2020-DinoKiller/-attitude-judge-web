@@ -2,7 +2,7 @@
 include_once("header.php");
 ?>
 
-<form id="SearchForm" @submit="checkForm" class="ui form" action="search.php" method="GET">
+<form id="SearchForm" @submit="checkForm" class="ui form" action="api/create_search.php" method="GET">
     <div class="field">
         <div class="ui fluid icon input">
             <input name="q" v-model="q" type="text" placeholder="開始搜尋......" required>

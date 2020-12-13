@@ -1,8 +1,33 @@
 <?php
 
 include_once("../config.php");
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
 if (isset($_GET['q']) && $_GET['q'] != "") {
     $query = $_GET['q'];
-    $cmd = implode(" ", array($PYTHON_PATH, $GOOGLE_SEARCH_APP_PATH, escapeshellarg($query)));
-    shell_exec($cmd);
+
+    $connection = new AMQPStreamConnection($MQServer, $MQPort, $MQUsername, $MQPassword);
+    $channel = $connection->channel();
+
+    $channel->queue_declare('search_queue', false, true, false, false);
+
+    $sql = "INSERT INTO `search`(`SearchString`) VALUES (?)";
+    $sth = $conn->prepare($sql);
+    $sth->execute(array($query));
+
+    $data = array('searchText' => $query);
+    $msg = new AMQPMessage(
+            json_encode($data),
+            array('delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT)
+        );
+
+    $channel->basic_publish($msg, '', 'search_queue');
+
+    $insert_id = $conn->lastInsertId();
+
+    header("Location: /search.php?id=" . $insert_id);
 }
