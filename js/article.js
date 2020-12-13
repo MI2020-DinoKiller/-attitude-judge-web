@@ -26,6 +26,8 @@ function queryString ()
 let arr_sent = [{"label": "green", "face": "smile"}, {"label": "red", "face": "frown"}]
 function GetTemplate(score, sentence)
 {
+    if (score == 0.0)
+        return $('<p>').append(sentence);
     let index = (score < 0.0) ? 1 : 0;
     return $('<div>', {class: 'ui raised segment'})
     .append(
@@ -65,7 +67,7 @@ function GetTemplate(score, sentence)
 function GetArticle()
 {
     let s = queryString();
-    jQuery.get("/api/article.php", s, function (data) {
+    $.get("/api/article.php", s, function (data) {
         $('#loading_screen').remove();
         let result = JSON.parse(data);
         $('#title')[0].innerText = result["title"];
