@@ -1,6 +1,6 @@
 <?php
 include_once("header.php");
-if (!isset($_GET["q"])) {
+if (!isset($_GET["id"])) {
     header("Location: /");
 }
 ?>
@@ -28,59 +28,94 @@ if (!isset($_GET["q"])) {
 </form>
 
 
-
-<div class="ui divided items">
-    <div class="item">
-        <div class="content">
-            <h1 class="ui header">日本研究：起斑點香蕉具「抗癌力」 香蕉變黑營養價值更高 | Heho ...</h1>
-            <div class="meta">
-                <span>2020年4月1日</span>
-            </div>
-            <div class="description">
-                <p>吃香蕉好處多，許多人買香蕉時，都喜歡挑外表漂亮的香蕉，尤其還帶點青綠色，看到長了斑的或是變黑的香蕉，全都不選。最新日本研究指出熟透起...</p>
-            </div>
-            <div class="extra">
-                <i class="big green check icon"></i>
-                可信任機構
-            </div>
-        </div>
+<div class="ui two column very relaxed grid" style="padding-top: 20px">
+    <div class="column">
+        <h2 class="ui blue center aligned top attached header">
+            <i class="smile icon"></i>
+            正向
+        </h2>
+        <table class="ui fixed single line celled padded table large selectable">
+            <thead>
+                <tr>
+                    <th class="single line thirteen wide"><i class="file outline icon"></i>標題</th>
+                    <th class="single line three wide"><i class="star outline icon"></i>分數</th>
+                </tr>
+            </thead>
+            <tbody id="positive">
+                <!-- <tr onclick="window.open('https://google.com');">
+                    <td>ekwdnkleasnmddewdewdwedwedwedwedweklasnmkldjasldjskladjklasjdklasjdiklsa</td>
+                    <td>0.0005</td>
+                </tr> -->
+            </tbody>
+            <!-- <tfoot>
+                <tr>
+                    <th colspan="2">
+                        <div class="ui pagination menu">
+                            <a class="active item">
+                                1
+                            </a>
+                            <div class="disabled item">
+                                ...
+                            </div>
+                            <a class="item">
+                                10
+                            </a>
+                            <a class="item">
+                                11
+                            </a>
+                            <a class="item">
+                                12
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            </tfoot> -->
+        </table>
     </div>
-    <div class="item">
-        <div class="content">
-            <h1 class="ui header">日本研究：起斑點香蕉具「抗癌力」 香蕉變黑營養價值更高 | Heho ...</h1>
-            <div class="meta">
-                <span>2020年4月1日</span>
-            </div>
-            <div class="description">
-                <p>吃香蕉好處多，許多人買香蕉時，都喜歡挑外表漂亮的香蕉，尤其還帶點青綠色，看到長了斑的或是變黑的香蕉，全都不選。最新日本研究指出熟透起...</p>
-            </div>
-            <div class="extra">
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="content">
-            <h1 class="ui header">日本研究：起斑點香蕉具「抗癌力」 香蕉變黑營養價值更高 | Heho ...</h1>
-            <div class="meta">
-                <span>2020年4月1日</span>
-            </div>
-            <div class="description">
-                <p>吃香蕉好處多，許多人買香蕉時，都喜歡挑外表漂亮的香蕉，尤其還帶點青綠色，看到長了斑的或是變黑的香蕉，全都不選。最新日本研究指出熟透起...</p>
-            </div>
-            <div class="extra">
-                <i class="green check icon"></i>
-                可信任機構
-            </div>
-        </div>
+    <div class="column">
+        <h2 class="ui orange center aligned top attached header">
+            <i class="frown icon"></i>
+            反向
+        </h2>
+        <table class="ui fixed single line celled padded table large selectable">
+            <thead>
+                <tr>
+                    <th class="single line thirteen wide"><i class="file outline icon"></i>標題</th>
+                    <th class="single line three wide"><i class="star outline icon"></i>分數</th>
+                </tr>
+            </thead>
+            <tbody id="negative">
+                <!-- <tr>
+                    <td>7777777777</td>
+                    <td>-6.0005</td>
+                </tr> -->
+            </tbody>
+            <!-- <tfoot>
+                <tr>
+                    <th colspan="2">
+                        <div class="ui pagination menu">
+                            <a class="active item">
+                                1
+                            </a>
+                            <div class="disabled item">
+                                ...
+                            </div>
+                            <a class="item">
+                                10
+                            </a>
+                            <a class="item">
+                                11
+                            </a>
+                            <a class="item">
+                                12
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            </tfoot> -->
+        </table>
     </div>
 </div>
-<?php
-
-$output = shell_exec("/usr/local/bin/python3 google-search-crawler/app.py '" . $_GET["q"] . "' 1");
-$output = preg_replace("{{.*}}", "", $output);
-echo "<div class=\"ui segment\"><pre style=\"overflow-x: scroll;\">" . htmlspecialchars($output) . "</pre></div>";
-
-?>
 
 <?php
 include_once("footer.php");
