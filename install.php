@@ -2,9 +2,9 @@
 include_once("config.php");
 $SQL = "
     DROP TABLE IF EXISTS `idf`;
-    DROP TABLE IF EXISTS `search`;
     DROP TABLE IF EXISTS `sentence`;
     DROP TABLE IF EXISTS `searchresult`;
+    DROP TABLE IF EXISTS `search`;
     DROP TABLE IF EXISTS `WhiteList`;
 
     CREATE TABLE IF NOT EXISTS `idf` (
@@ -27,7 +27,7 @@ $SQL = "
     
     CREATE TABLE IF NOT EXISTS `searchresult` (
     `SearchResultId` int(11) NOT NULL,
-    `SearchId` varchar(50) NOT NULL,
+    `SearchId` int(11) NOT NULL,
     `WhiteListId` int(11) NOT NULL DEFAULT '0',
     `SearchResultRate` double NOT NULL,
     `Link` varchar(1000) NOT NULL,
@@ -35,6 +35,7 @@ $SQL = "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ALTER TABLE `searchresult` ADD PRIMARY KEY (`SearchResultId`);
     ALTER TABLE `searchresult` MODIFY `SearchResultId` int(11) NOT NULL AUTO_INCREMENT;
+    ALTER TABLE `searchresult` ADD  CONSTRAINT `SearchId` FOREIGN KEY (`SearchId`) REFERENCES `search`(`SearchId`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
     
     CREATE TABLE IF NOT EXISTS `sentence` (
