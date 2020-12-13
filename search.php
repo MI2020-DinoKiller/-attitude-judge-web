@@ -5,19 +5,9 @@ if (!isset($_GET["id"])) {
 }
 ?>
 
-<script type="application/javascript">
-    function decodeEntities(encodedString) {
-        var textArea = document.createElement('textarea');
-        textArea.innerHTML = encodedString;
-        return textArea.value;
-    }
-    var myDataFromPhp = {
-        'q': decodeEntities("<?php echo htmlspecialchars($_GET["q"]); ?>")
-    };
-</script>
 
 
-<form id="SearchForm" @submit="checkForm" class="ui form" action="search.php" method="GET">
+<!-- <form id="SearchForm" @submit="checkForm" class="ui form" action="search.php" method="GET">
     <div class="field">
         <div class="ui fluid icon input">
             <input name="q" v-model="q" type="text" placeholder="開始搜尋......" required>
@@ -25,8 +15,21 @@ if (!isset($_GET["id"])) {
         </div>
     </div>
     <button type="submit" class="massive ui primary button" v-bind:class="{loading: isActive, disabled: isActive}">搜尋</button>
-</form>
+</form> -->
+<?php
+include_once("config.php");
+$sql = "SELECT SearchString FROM search WHERE SearchId = ?";
+$sth = $conn->prepare($sql);
+$sth->execute(array(intval($_GET['id'])));
+$result = $sth->fetchAll();
+?>
 
+<h1 class="ui header">搜尋：<?= htmlspecialchars($result[0][0]) ?>
+</h1>
+<h2 class="ui header" id="status">
+    <div class="ui active inline loader"></div>
+    載入中......
+</h2>
 
 <div class="ui two column very relaxed grid" style="padding-top: 20px">
     <div class="column">

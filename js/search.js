@@ -1,28 +1,28 @@
-var app = new Vue({
-    el: '#app',
-    data: {
-        errors: [],
-        q: window.myDataFromPhp['q'],
-        isActive: false
-    },
-    methods: {
-        checkForm: function (e) {
-            this.q = this.q.trim();
-            if (this.q) {
-                this.isActive = !this.isActive;
-                return true;
-            }
+// var app = new Vue({
+//     el: '#app',
+//     data: {
+//         errors: [],
+//         q: window.myDataFromPhp['q'],
+//         isActive: false
+//     },
+//     methods: {
+//         checkForm: function (e) {
+//             this.q = this.q.trim();
+//             if (this.q) {
+//                 this.isActive = !this.isActive;
+//                 return true;
+//             }
 
-            this.errors = [];
+//             this.errors = [];
 
-            if (!this.q) {
-                this.errors.push('Search Text Required!');
-            }
+//             if (!this.q) {
+//                 this.errors.push('Search Text Required!');
+//             }
 
-            e.preventDefault();
-        }
-    }
-});
+//             e.preventDefault();
+//         }
+//     }
+// });
 
 function queryString ()
 {
@@ -93,11 +93,17 @@ function IntervalGetSearchResult()
         }
         else {
             resultZeroTime++;
+            console.log(resultZeroTime);
         }
     });
-    if (resultZeroTime > 20)
+    if (resultZeroTime > 20){
         clearInterval(interval_num);
+        $("#status")[0].innerHTML = "載入完成！";
+        if (last == 0) {
+            $("#status")[0].innerHTML = "載入完成！沒有任何結果！";
+        }
+    }
 }
 
 IntervalGetSearchResult();
-interval_num = setInterval(IntervalGetSearchResult, 3000);
+interval_num = setInterval(IntervalGetSearchResult, 1500);
