@@ -21,18 +21,18 @@ include_once("header.php");
 </div>
 </br>
 <div class="ui center aligned container">
-    <a class="ui labeled icon large button" href="">
+    <!-- <a class="ui labeled icon large button" href="">
         <i class="arrow alternate circle left outline icon"></i>
         上一個
-    </a>
-    <a class="ui labeled icon large button" href="search_page.php">
+    </a> -->
+    <a class="ui labeled icon large button" href="" onclick="history.go(-1); return false;">
         <i class="reply icon"></i>
         返回
     </a>
-    <a class="ui right labeled icon large button" href="">
+    <!-- <a class="ui right labeled icon large button" href="">
         <i class="arrow alternate circle right outline icon"></i>
         下一個
-    </a>
+    </a> -->
 </div>
 
 <?php
