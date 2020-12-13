@@ -16,7 +16,8 @@ $filename = $filename['filename'];
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 
 </head>
 
