@@ -1,6 +1,12 @@
 <?php
 include_once("config.php");
-$SQL = "DROP TABLE IF EXISTS `idf`;
+$SQL = "
+    DROP TABLE IF EXISTS `idf`;
+    DROP TABLE IF EXISTS `search`;
+    DROP TABLE IF EXISTS `sentence`;
+    DROP TABLE IF EXISTS `searchresult`;
+    DROP TABLE IF EXISTS `WhiteList`;
+
     CREATE TABLE IF NOT EXISTS `idf` (
     `idfid` int(11) NOT NULL,
     `idfstring` varchar(4) NOT NULL,
