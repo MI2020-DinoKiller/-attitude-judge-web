@@ -1,6 +1,6 @@
       </div>
       </div>
-      <div class="ui inverted vertical footer segment">
+      <!-- <div class="ui inverted vertical footer segment">
         <div class="ui center aligned container">
           <div class="ui stackable inverted divided grid">
             <div class="seven center wide column">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      </div>
+      </div> -->
 
       </body>
       <style>
