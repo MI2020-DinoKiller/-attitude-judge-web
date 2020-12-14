@@ -18,8 +18,9 @@ if (isset($_GET['q']) && $_GET['q'] != "") {
     $sql = "INSERT INTO `search`(`SearchString`) VALUES (?)";
     $sth = $conn->prepare($sql);
     $sth->execute(array($query));
+    $insert_id = $conn->lastInsertId();
 
-    $data = array('searchText' => $query);
+    $data = array('searchText' => $query, 'id' => $insert_id);
     $msg = new AMQPMessage(
             json_encode($data),
             array('delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT)
@@ -27,7 +28,7 @@ if (isset($_GET['q']) && $_GET['q'] != "") {
 
     $channel->basic_publish($msg, '', 'search_queue');
 
-    $insert_id = $conn->lastInsertId();
+    
 
     header("Location: /search.php?id=" . $insert_id);
 }
