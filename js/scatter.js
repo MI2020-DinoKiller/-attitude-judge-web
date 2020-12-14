@@ -119,7 +119,7 @@ function GetElement(id, title, score, whitelist)
     var ret = new Object();
     ret["y"] = whitelist;
     ret["x"] = parseFloat(score);
-    ret["link"] = "result.php?id=" + id;
+    ret["link"] = "article.php?id=" + id;
     ret["title"] = title;
     return ret;
 }
