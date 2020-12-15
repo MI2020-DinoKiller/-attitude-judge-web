@@ -1,6 +1,8 @@
 <?php
 include_once("config.php");
-$SQL = "
+if (isset($_GET["all"]))
+{
+    $SQL = "
     DROP TABLE IF EXISTS `idf`;
     DROP TABLE IF EXISTS `sentence`;
     DROP TABLE IF EXISTS `searchresult`;
@@ -56,6 +58,7 @@ $SQL = "
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     
     INSERT INTO `WhiteList` (`WhiteListId`, `WhiteListName`, `WhiteListClass`, `WhiteListLink`) VALUES
+    (0, '其他', 0, 'https://mi2020.tcu.app'),
     (1, '衛生福利部', 1, 'https://www.mohw.gov.tw/'),
     (2, '衛生福利部中央健康保險署', 1, 'https://www.nhi.gov.tw/'),
     (3, '衛生福利部疾病管制署', 1, 'https://www.cdc.gov.tw/'),
@@ -637,6 +640,49 @@ $SQL = "
     ALTER TABLE `WhiteList` ADD PRIMARY KEY (`WhiteListId`);
     ALTER TABLE `WhiteList` MODIFY `WhiteListId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=579;
     ";
-$conn->exec($SQL);
+    $conn->exec($SQL);
+}
+else
+{
+    $SQL = "
+    DROP TABLE IF EXISTS `sentence`;
+    DROP TABLE IF EXISTS `searchresult`;
+    DROP TABLE IF EXISTS `search`;
+
+    
+    CREATE TABLE IF NOT EXISTS `search` (
+    `SearchId` int(11) NOT NULL,
+    `SearchString` varchar(100) NOT NULL,
+    `SearchEmail` varchar(1000) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ALTER TABLE `search` ADD PRIMARY KEY (`SearchId`);
+    ALTER TABLE `search` MODIFY `SearchId` int(11) NOT NULL AUTO_INCREMENT;
+
+    
+    CREATE TABLE IF NOT EXISTS `searchresult` (
+    `SearchResultId` int(11) NOT NULL,
+    `SearchId` int(11) NOT NULL,
+    `WhiteListId` int(11) NOT NULL DEFAULT '0',
+    `SearchResultRate` double NOT NULL,
+    `Link` varchar(1000) NOT NULL,
+    `Title` varchar(1000) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ALTER TABLE `searchresult` ADD PRIMARY KEY (`SearchResultId`);
+    ALTER TABLE `searchresult` MODIFY `SearchResultId` int(11) NOT NULL AUTO_INCREMENT;
+    ALTER TABLE `searchresult` ADD  CONSTRAINT `SearchId` FOREIGN KEY (`SearchId`) REFERENCES `search`(`SearchId`) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+    
+    CREATE TABLE IF NOT EXISTS `sentence` (
+    `sentence_id` int(11) NOT NULL,
+    `search_result_id` int(11) NOT NULL,
+    `sentences` longtext NOT NULL,
+    `sentence_grade` double NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+    ALTER TABLE `sentence` ADD PRIMARY KEY (`sentence_id`), ADD KEY `search_result_id` (`search_result_id`);
+    ALTER TABLE `sentence` MODIFY `sentence_id` int(11) NOT NULL AUTO_INCREMENT;
+    ALTER TABLE `sentence` ADD CONSTRAINT `search_result_id` FOREIGN KEY (`search_result_id`) REFERENCES `searchresult` (`SearchResultId`);
+    ";
+    $conn->exec($SQL);
+}
 echo "Success";
 ?>

@@ -77,7 +77,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
         markerSize: 20,
         toolTipContent: "<b>標題：{title}</b><br/><b>分數: </b>{x}",
         click: onClick,
-        color: "purple",
+        // color: "purple",
         dataPoints: MYData
     }]
 });
@@ -117,7 +117,7 @@ let last = 0, interval_num, resultZeroTime = 0;
 function GetElement(id, title, score, whitelist)
 {
     var ret = new Object();
-    ret["y"] = whitelist;
+    ret["y"] = (parseInt(whitelist) == 0) ? 7 : parseInt(whitelist);
     ret["x"] = parseFloat(score);
     ret["link"] = "article.php?id=" + id;
     ret["title"] = title;
@@ -132,7 +132,7 @@ function IntervalGetChartResult()
         let result = JSON.parse(data);
         // console.log(result);
         result.forEach(element => {
-            MYData.push(GetElement(element["SearchResultId"], element["Title"], element["SearchResultRate"], 3));
+            MYData.push(GetElement(element["SearchResultId"], element["Title"], element["SearchResultRate"], element["WhiteListClass"]));
             last = element["SearchResultId"];
         });
         // console.log(MYData);
