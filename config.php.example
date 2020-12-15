@@ -8,6 +8,7 @@ $MQServer = "host";
 $MQPort = 5672;
 $MQUsername = "username";
 $MQPassword = "password";
+$MQQueue = "queue_name"
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);

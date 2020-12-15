@@ -13,7 +13,7 @@ if (isset($_GET['q']) && $_GET['q'] != "") {
     $connection = new AMQPStreamConnection($MQServer, $MQPort, $MQUsername, $MQPassword);
     $channel = $connection->channel();
 
-    $channel->queue_declare('search_queue', false, true, false, false);
+    $channel->queue_declare($MQQueue, false, true, false, false);
 
     $sql = "INSERT INTO `search`(`SearchString`) VALUES (?)";
     $sth = $conn->prepare($sql);
@@ -26,7 +26,7 @@ if (isset($_GET['q']) && $_GET['q'] != "") {
             array('delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT)
         );
 
-    $channel->basic_publish($msg, '', 'search_queue');
+    $channel->basic_publish($msg, '', $MQQueue);
 
     
 
