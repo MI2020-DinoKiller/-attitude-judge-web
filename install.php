@@ -21,7 +21,10 @@ if (isset($_GET["all"]))
     
     CREATE TABLE IF NOT EXISTS `search` (
     `SearchId` int(11) NOT NULL,
-    `SearchString` varchar(100) NOT NULL
+    `SearchString` varchar(100) NOT NULL,
+    `email` varchar(1000) NOT NULL,
+    `hasFinish` BOOLEAN NOT NULL DEFAULT FALSE,
+    `hasSendMail` BOOLEAN NOT NULL DEFAULT FALSE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ALTER TABLE `search` ADD PRIMARY KEY (`SearchId`);
     ALTER TABLE `search` MODIFY `SearchId` int(11) NOT NULL AUTO_INCREMENT;
@@ -653,7 +656,9 @@ else
     CREATE TABLE IF NOT EXISTS `search` (
     `SearchId` int(11) NOT NULL,
     `SearchString` varchar(100) NOT NULL,
-    `SearchEmail` varchar(1000) NOT NULL
+    `email` varchar(1000) NOT NULL,
+    `hasFinish` BOOLEAN NOT NULL DEFAULT FALSE,
+    `hasSendMail` BOOLEAN NOT NULL DEFAULT FALSE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     ALTER TABLE `search` ADD PRIMARY KEY (`SearchId`);
     ALTER TABLE `search` MODIFY `SearchId` int(11) NOT NULL AUTO_INCREMENT;
