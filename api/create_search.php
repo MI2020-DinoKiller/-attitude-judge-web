@@ -51,7 +51,14 @@ try {
     else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         throw new Exception("Email 為無效格式");
     }
-    
+
+    $sql = "SELECT `SearchId` FROM `search` WHERE `SearchString` = ? AND `email` = ? AND `hasFinish` = FALSE";
+    $sth = $conn->prepare($sql);
+    $sth->execute(array($query, $email));
+    $result = $sth->fetchAll();
+    if (count($result) >= 1) {
+        throw new Exception("您的相同查詢句正在處理中！");
+    }
 
     $connection = new AMQPStreamConnection($MQServer, $MQPort, $MQUsername, $MQPassword);
     $channel = $connection->channel();
@@ -59,7 +66,6 @@ try {
 
     $sql = "INSERT INTO `search`(`SearchString`, `email`) VALUES (?, ?)";
     $sth = $conn->prepare($sql);
-
     $sth->execute(array($query, $email));
     $insert_id = $conn->lastInsertId();
     $data = array('searchText' => $query, 'id' => $insert_id);
