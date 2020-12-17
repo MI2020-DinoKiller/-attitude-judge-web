@@ -4,7 +4,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     zoomEnabled: true,
     zoomType: "x",
     title: {
-        text: "正反向程度分數—白名單"
+        text: ""
     },
     axisX: {
         viewportMinimum: -1,
