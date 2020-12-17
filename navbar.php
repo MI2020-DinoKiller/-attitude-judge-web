@@ -5,6 +5,6 @@
                 網路上正反意向健康保健資訊之推薦
             </span>
         </a>
-        <a class="item" href="/whitelist.php"><i class="list icon"></i> 白名單</a>
+        <a class="item" href="/whitelist.php"><i class="list icon"></i> 網路性質、來源（白名單）</a>
     </div>
 </div>
