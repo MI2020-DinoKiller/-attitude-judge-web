@@ -1,4 +1,6 @@
 <?php
+
+$HOST = "HOST_URL";
 $servername = "host";
 $username = "username";
 $password = "password";
@@ -9,6 +11,10 @@ $MQPort = 5672;
 $MQUsername = "username";
 $MQPassword = "password";
 $MQQueue = "queue_name"
+
+$MAILHost = "SMTP_SERVER";
+$MAILUsername = "MAIL_USERNAME";
+$MAILPassword = "MAIL_PASSWORD";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
