@@ -49,7 +49,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     },
     axisY: {
         reversed: true,
-        title: "網路性質、來源",
+        title: "網頁來源",
         viewportMinimum: 0,
         viewportMaximum: 8,
         labelFormatter: function(e) {
