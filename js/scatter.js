@@ -60,9 +60,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
             else if (e.value == 3)
                 return "基金會";
             else if (e.value == 4)
-                return "新聞媒體";
+                return "大專院校";
             else if (e.value == 5)
-                return "大專院";
+                return "新聞媒體";
             else if (e.value == 6)
                 return "雜誌";
             else if (e.value == 7)
