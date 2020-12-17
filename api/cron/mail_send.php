@@ -1,6 +1,6 @@
 <?php
 
-include_once("../../config.php");
+include_once(__DIR__ . "/../../config.php");
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -60,7 +60,7 @@ function searchIdLock(string $id) {
 function getDatabase()
 {
     global $conn;
-    $sql = "SELECT * FROM `Search` WHERE hasFinish = TRUE AND hasSendMail = FALSE";
+    $sql = "SELECT * FROM `search` WHERE hasFinish = TRUE AND hasSendMail = FALSE";
     $sth = $conn->prepare($sql);
     $sth->execute();
     $result = $sth->fetchAll();
