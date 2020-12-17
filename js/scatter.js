@@ -113,7 +113,7 @@ function queryString ()
     }
     return query_string;
 }
-let last = 0, interval_num, resultZeroTime = 0;
+let last = 0;
 function GetElement(id, title, score, whitelist)
 {
     var ret = new Object();
@@ -131,22 +131,16 @@ function IntervalGetChartResult()
     $.get("/api/scatter.php", s, function (data) {
         let result = JSON.parse(data);
         // console.log(result);
-        result.forEach(element => {
+        chart.title.set("text", result["title"]);
+        result["result"].forEach(element => {
             MYData.push(GetElement(element["SearchResultId"], element["Title"], element["SearchResultRate"], element["WhiteListClass"]));
             last = element["SearchResultId"];
         });
+    }).then(()=>{
         // console.log(MYData);
-        if (result.length > 0) {
-            resultZeroTime = 0;
-            chart.render();
-        }
-        else {
-            resultZeroTime++;
-        }
+        chart.render();
     });
-    if (resultZeroTime > 20)
-        clearInterval(interval_num);
 }
 
 IntervalGetChartResult();
-interval_num = setInterval(IntervalGetChartResult, 3000);
+// interval_num = setInterval(IntervalGetChartResult, 3000);

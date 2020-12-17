@@ -30,7 +30,7 @@ $result = $sth->fetchAll();
     <div class="ui active inline loader"></div>
     載入中......
 </h2>
-<a class="ui labeled icon button" href="scatter.php?id=<?=$_GET['id']?>">
+<a class="ui huge labeled icon button primary" href="scatter.php?id=<?=$_GET['id']?>">
     <i class="book icon"></i>
     圖表
 </a>

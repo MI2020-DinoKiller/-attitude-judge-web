@@ -45,7 +45,6 @@ function GetTemplate(id, title, score)
     //     <td>0.0005</td>
     // </tr>
 }
-
 function IntervalGetSearchResult()
 {
     let s = queryString();
@@ -69,15 +68,14 @@ function IntervalGetSearchResult()
             resultZeroTime++;
             console.log(resultZeroTime);
         }
-    });
-    if (resultZeroTime > 20){
-        clearInterval(interval_num);
+    }).then(()=>{
         $("#status")[0].innerHTML = "載入完成！";
         if (last == 0) {
             $("#status")[0].innerHTML = "載入完成！沒有任何結果！";
         }
-    }
+    });
+    
 }
 
 IntervalGetSearchResult();
-interval_num = setInterval(IntervalGetSearchResult, 1500);
+// interval_num = setInterval(IntervalGetSearchResult, 1500);

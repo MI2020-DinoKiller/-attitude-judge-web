@@ -18,5 +18,11 @@ if (isset($_GET['id']) && intval($_GET['id']) && isset($_GET['last']) && intval(
     $sth = $conn->prepare($sql);
     $sth->execute(array($q_id));
     $result = $sth->fetchAll();
-    echo json_encode($result);
+    
+    $sql2 = "SELECT SearchString FROM search WHERE SearchId = ?";
+    $sth2 = $conn->prepare($sql2);
+    $sth2->execute(array($q_id));
+    $result2 = $sth2->fetchAll();
+    $ret = array('title' => $result2[0]["SearchString"], "result" => $result);
+    echo json_encode($ret);
 }
