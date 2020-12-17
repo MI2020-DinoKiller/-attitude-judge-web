@@ -32,6 +32,7 @@ function SendMail(string $id, string $receiver_email, string $query) {
         $mail->addAddress($receiver_email);     // Add a recipient
 
         // Content
+        $mail->CharSet = 'UTF-8';
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = "您的搜尋結果：「" . $query . "」已完成！";
         $mail->Body    = "<a href=\"${HOST}/search.php?id=${id}\">${HOST}/search.php?id=${id}</a>";
