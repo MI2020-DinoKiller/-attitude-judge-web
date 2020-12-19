@@ -17,6 +17,7 @@ $filename = $filename['filename'];
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.umd.js" integrity="sha256-F7V+qCKQyJkKlAzZnRVzlWyTjS7o7NQE345fQpqEawI=" crossorigin="anonymous"></script>
 
 
 </head>

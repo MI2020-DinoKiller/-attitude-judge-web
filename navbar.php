@@ -6,5 +6,6 @@
             </span>
         </a>
         <a class="item" href="/whitelist.php"><i class="list icon"></i> 白名單</a>
+        <a class="item" href="/status.php"><i class="chart bar outline icon"></i> 狀態</a>
     </div>
 </div>

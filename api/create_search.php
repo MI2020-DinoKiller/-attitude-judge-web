@@ -40,7 +40,7 @@ try {
 
     $connection = new AMQPStreamConnection($MQServer, $MQPort, $MQUsername, $MQPassword);
     $channel = $connection->channel();
-    $channel->queue_declare($MQQueue, false, true, false, false);
+    $channel->queue_declare($MQQueueSearch, false, true, false, false);
 
     $sql = "INSERT INTO `search`(`SearchString`, `email`) VALUES (?, ?)";
     $sth = $conn->prepare($sql);
@@ -51,7 +51,7 @@ try {
         json_encode($data),
         array('delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT)
     );
-    $channel->basic_publish($msg, '', $MQQueue);
+    $channel->basic_publish($msg, '', $MQQueueSearch);
     $ret = array('ok' => 1, 'msg' => "");
     echo json_encode($ret);
 } catch (AMQPRuntimeException $e) {

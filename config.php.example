@@ -10,7 +10,8 @@ $MQServer = "host";
 $MQPort = 5672;
 $MQUsername = "username";
 $MQPassword = "password";
-$MQQueue = "queue_name"
+$MQQueueSearch = "queue_name"
+$MQQueueTask = "queue_name";
 
 $MAILHost = "SMTP_SERVER";
 $MAILUsername = "MAIL_USERNAME";
