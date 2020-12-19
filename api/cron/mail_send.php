@@ -45,7 +45,7 @@ function getPositiveResult(string $r_id, string $title) {
 
 function getPositiveContent(string $id) {
     global $conn;
-    $sql = "SELECT `SearchResultId`, `SearchResultRate`, `Title` FROM `searchresult` WHERE `SearchId` = ? AND `SearchResultRate` < 0.0 ORDER BY `SearchResultRate` DESC";
+    $sql = "SELECT `SearchResultId`, `SearchResultRate`, `Title` FROM `searchresult` WHERE `SearchId` = ? AND `SearchResultRate` > 0.0 ORDER BY `SearchResultRate` DESC";
     $sth = $conn->prepare($sql);
     $sth->execute(array($id));
     $result = $sth->fetchAll();
