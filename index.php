@@ -15,7 +15,7 @@ include_once("header.php");
                 <input name="e" id="e" type="email" placeholder="輸入您的 Email" required>
             </div>
         </div>
-        <input type="button" class="massive ui primary button" onclick="send()" value="搜尋"></input>
+        <input type="button" class="massive ui fluid primary button" onclick="send()" value="搜尋"></input>
     </div>
 </form>
 <?php
