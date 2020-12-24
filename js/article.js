@@ -71,6 +71,7 @@ function GetArticle()
         $('#loading_screen').remove();
         let result = JSON.parse(data);
         $('#title')[0].innerText = result["title"];
+        document.title = result["title"] + " - 網路上正反意向健康保健資訊之推薦";
         $('#url')[0].href = result["url"];
         let score_face = '<i class="smile outline icon"></i>';
         if (result["score"] < 0) {

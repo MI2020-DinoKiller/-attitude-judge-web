@@ -132,6 +132,7 @@ function IntervalGetChartResult()
         let result = JSON.parse(data);
         // console.log(result);
         chart.title.set("text", result["title"]);
+        document.title = "圖表：" + result["title"] + " - 網路上正反意向健康保健資訊之推薦";
         result["result"].forEach(element => {
             MYData.push(GetElement(element["SearchResultId"], element["Title"], element["SearchResultRate"], element["WhiteListClass"]));
             last = element["SearchResultId"];

@@ -1,3 +1,4 @@
+document.title = "白名單 - 網路上正反意向健康保健資訊之推薦";
 $('.ui.dropdown')
   .dropdown()
 ;

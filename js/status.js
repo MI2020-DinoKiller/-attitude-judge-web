@@ -1,3 +1,4 @@
+document.title = "狀態 - 網路上正反意向健康保健資訊之推薦";
 let taskQueue = new countUp.CountUp('taskQueue', 0);
 let searchQueue = new countUp.CountUp('searchQueue', 0);
 let waitTime = new countUp.CountUp('waitTime', 0, {suffix: ' min'});
@@ -6,7 +7,7 @@ searchQueue.start()
 waitTime.start()
 
 function getTime(search, task) {
-    let sec = task * 30 + search * 60 * 5;
+    let sec = task * 15 + search * 60 * 5;
     return Math.round(sec / 60);
 }
 

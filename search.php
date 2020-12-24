@@ -23,14 +23,16 @@ $sth = $conn->prepare($sql);
 $sth->execute(array(intval($_GET['id'])));
 $result = $sth->fetchAll();
 ?>
-
+<script>
+    document.title = "搜尋：<?= htmlspecialchars($result[0][0]) ?> - 網路上正反意向健康保健資訊之推薦";
+</script>
 <h1 class="ui header">搜尋：<?= htmlspecialchars($result[0][0]) ?>
 </h1>
 <h2 class="ui header" id="status">
     <div class="ui active inline loader"></div>
     載入中......
 </h2>
-<a class="ui huge labeled icon button primary" href="scatter.php?id=<?=$_GET['id']?>">
+<a class="ui huge labeled icon button primary" href="scatter.php?id=<?= $_GET['id'] ?>">
     <i class="book icon"></i>
     圖表
 </a>

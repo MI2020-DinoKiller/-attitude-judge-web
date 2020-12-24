@@ -1,3 +1,4 @@
+document.title = "首頁 - 網路上正反意向健康保健資訊之推薦";
 function queryVerify(q) {
     return q !== "";
 }
@@ -64,7 +65,8 @@ function send()
                         icon: 'success',
                         title: '成功！',
                         text: '我們已收到您的查詢'
-                    })
+                    });
+                    document.getElementById("q").value = "";
                 }
                 else if (result.value.ok === 0){
                     Swal.fire({
